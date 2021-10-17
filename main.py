@@ -13,7 +13,7 @@ client = discord.Client()
 
 @client.event
 async def on_message(message):
-    print(str(message.author) + ": " + str(message.content))
+    print(f"{str(message.author)}: {str(message.content)}")
 
     if str(message.content).startswith("."):
         if str(message.content) == ".join":
@@ -22,7 +22,7 @@ async def on_message(message):
             else:
                 await message.channel.send("You are not connected to voice channel.")
         elif str(message.content) == ".help":
-            await message.channel.send("Here is you help :).")
+            await message.channel.send("List of commands:" + "".join(str(" " + x) for x in list_of_commands) + ".")
         else:
             await message.channel.send("Unknown command.")
             print('Unknown command')
